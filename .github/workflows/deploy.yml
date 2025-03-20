@@ -14,7 +14,7 @@ jobs:
       # Étape 1 : Initialiser Terraform
       - name: Terraform Init
         run: |
-          cd terraform
+          cd ../terraform
           terraform init
 
 
