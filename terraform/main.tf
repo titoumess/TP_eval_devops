@@ -63,7 +63,7 @@ resource "aws_api_gateway_rest_api" "example_api" {
 resource "aws_api_gateway_resource" "example_resource" {
   rest_api_id = aws_api_gateway_rest_api.example_api.id
   parent_id   = aws_api_gateway_rest_api.example_api.root_resource_id
-  path_part   = "/g7_api" # Chemin de l'endpoint (ex: /example)
+  path_part   = "g7_api" # Chemin de l'endpoint (ex: /example)
 }
 
 # 🛠️ Configuration de la méthode HTTP (GET)
