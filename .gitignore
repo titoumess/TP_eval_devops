@@ -1,0 +1,12 @@
+# Exclure le dossier Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+
+# Exclure les fichiers de logs et de debug
+*.log
+*.bak
+*.hcl
+
+# Exclure les fichiers zip générés
+*.zip
