@@ -17,22 +17,27 @@ jobs:
           cd terraform
           terraform init
 
+      # Étape 2 : Configurer Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0 # Remplacez par la version de Terraform que vous utilisez
 
-      # Étape 2 : Valider la configuration Terraform
+      # Étape 3 : Valider la configuration Terraform
       - name: Terraform Validate
         run: terraform validate
 
-      # Étape 3 : Planifier les modifications Terraform
+      # Étape 4 : Planifier les modifications Terraform
       - name: Terraform Plan
         run: terraform plan
 
-      # Étape 4 : Appliquer les modifications Terraform (optionnel, à utiliser avec précaution)
+      # Étape 5 : Appliquer les modifications Terraform (optionnel, à utiliser avec précaution)
       - name: Terraform Apply
         run: terraform apply -auto-approve
         #env:
           #TF_VAR_example_variable: value 
 
-      # Étape 5 : Sauvegarder le fichier terraform.tfstate dans la branche "state"
+      # Étape 6 : Sauvegarder le fichier terraform.tfstate dans la branche "state"
       - name: Commit and Push Terraform State
         run: |
           git config --global user.name "github-actions[bot]"
