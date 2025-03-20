@@ -19,7 +19,7 @@ jobs:
 
       # Étape 2 : Initialiser Terraform
       - name: Terraform Init
-          run: |
+        run: |
           echo "Current directory:"
           pwd
           echo "Listing files:"
