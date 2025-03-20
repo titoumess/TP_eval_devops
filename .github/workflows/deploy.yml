@@ -19,19 +19,9 @@ jobs:
 
       # Étape 2 : Initialiser Terraform
       - name: Terraform Init
-          run: |
-          echo "Current directory:"
-          pwd
-          echo "Listing files:"
-          ls -la
+        run: |
           cd terraform
           terraform init
-
-      # Étape 2 : Configurer Terraform
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.5.0 # Remplacez par la version de Terraform que vous utilisez
 
       # Étape 3 : Valider la configuration Terraform
       - name: Terraform Validate
