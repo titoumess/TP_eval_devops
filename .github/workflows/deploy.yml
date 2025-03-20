@@ -18,14 +18,14 @@ jobs:
           pwd
           echo "Listing files:"
           ls -la
-          cd ./terraform
+          
           terraform init
 
       # Étape 2 : Configurer Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.5.0 # Remplacez par la version de Terraform que vous utilisez
+          terraform_version: 1.12.0 # Remplacez par la version de Terraform que vous utilisez
 
       # Étape 3 : Valider la configuration Terraform
       - name: Terraform Validate
