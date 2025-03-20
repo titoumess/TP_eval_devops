@@ -100,3 +100,8 @@ resource "aws_lambda_permission" "api_gateway_permission" {
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.example_api.execution_arn}/*/*"
 }
+
+output "api_gateway_url" {
+  value = "https://${aws_api_gateway_rest_api.example_api.id}.execute-api.${var.aws_region}.amazonaws.com/${aws_api_gateway_deployment.example_deployment.stage_name}"
+  description = "URL de l'API Gateway déployée"
+}
