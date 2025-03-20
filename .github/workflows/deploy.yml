@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      
+      # Étape 1 : Installer Terraform
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
 
       # Étape 2 : Initialiser Terraform
       - name: Terraform Init
