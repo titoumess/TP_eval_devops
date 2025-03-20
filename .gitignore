@@ -10,5 +10,4 @@ terraform.tfstate.backup
 # Exclure les fichiers zip générés
 *.zip
 
-terraform/.terraform.lock.hcl
 terraform/output.json

@@ -10,18 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      # Étape 1 : Configurer Terraform
-      - name: Setup Terraform
+      
+      # Étape 1 : Installer Terraform
+      - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.12.0 # Remplacez par la version de Terraform que vous utilisez
 
       # Étape 2 : Initialiser Terraform
       - name: Terraform Init
         run: |
+          echo "Current directory:"
+          pwd
+          echo "Listing files:"
+          ls -la
           cd terraform
           terraform init
+
+      # Étape 2 : Configurer Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0 # Remplacez par la version de Terraform que vous utilisez
 
       # Étape 3 : Valider la configuration Terraform
       - name: Terraform Validate
