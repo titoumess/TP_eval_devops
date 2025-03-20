@@ -33,7 +33,7 @@ resource "aws_iam_policy_attachment" "lambda_basic_policy" {
 # 📂 Compression du code en ZIP avant le déploiement
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "lambda/index.js" # Assurez-vous que ce fichier existe
+  source_file = "../lambda/index.js" # Assurez-vous que ce fichier existe
   output_path = "lambda_function.zip"
 }
 

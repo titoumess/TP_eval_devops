@@ -6,7 +6,8 @@ terraform.tfstate.backup
 # Exclure les fichiers de logs et de debug
 *.log
 *.bak
-*.hcl
 
 # Exclure les fichiers zip générés
 *.zip
+
+terraform/.terraform.lock.hcl
