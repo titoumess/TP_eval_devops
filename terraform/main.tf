@@ -4,7 +4,7 @@ provider "aws" {
 
 # 🏗️ Création du rôle IAM pour la Lambda
 resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_execution_role"
+  name = "g7-lambda_execution_role"
 
   assume_role_policy = <<EOF
 {
@@ -25,7 +25,7 @@ EOF
 
 # 📌 Attachement de la politique AWS de base pour Lambda
 resource "aws_iam_policy_attachment" "lambda_basic_policy" {
-  name       = "lambda_basic_policy_attachment"
+  name       = "g7-lambda_basic_policy_attachment"
   roles      = [aws_iam_role.lambda_exec.name]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
@@ -39,7 +39,7 @@ data "archive_file" "lambda_zip" {
 
 # 🚀 Déploiement de la Lambda
 resource "aws_lambda_function" "time_lambda" {
-  function_name    = "get_time_lambda"
+  function_name    = "g7-get_time_lambda"
   runtime         = "nodejs18.x"
   handler         = "index.handler"
   role            = aws_iam_role.lambda_exec.arn
