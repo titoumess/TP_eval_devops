@@ -22,7 +22,7 @@ jobs:
           pwd
           echo "Listing files:"
           ls -la
-          
+          cd terraform
           terraform init
 
       # Étape 2 : Configurer Terraform
