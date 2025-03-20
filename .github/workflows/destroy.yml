@@ -1,0 +1,25 @@
+name: Terraform Destroy Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      #Etape 1 : Détruire les ressources Terraform
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
+
+      # Étape 2 : Sauvegarder le fichier terraform.tfstate dans la branche "state"
+      - name: Commit and Push Terraform State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b state || git checkout state
+          mv terraform.tfstate state/terraform.tfstate
+          git add state/terraform.tfstate
+          git commit -m "Update Terraform state"
+          git push origin state

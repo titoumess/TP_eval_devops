@@ -1,0 +1,41 @@
+name: Terraform Deploy Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Étape 1 : Initialiser Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # Étape 2 : Valider la configuration Terraform
+      - name: Terraform Validate
+        run: terraform validate
+
+      # Étape 3 : Planifier les modifications Terraform
+      - name: Terraform Plan
+        run: terraform plan
+
+      # Étape 4 : Appliquer les modifications Terraform (optionnel, à utiliser avec précaution)
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        #env:
+          #TF_VAR_example_variable: value 
+
+      # Étape 5 : Sauvegarder le fichier terraform.tfstate dans la branche "state"
+      - name: Commit and Push Terraform State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b state || git checkout state
+          mv terraform.tfstate state/terraform.tfstate
+          git add state/terraform.tfstate
+          git commit -m "Update Terraform state"
+          git push origin state
