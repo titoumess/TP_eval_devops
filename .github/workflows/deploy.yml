@@ -13,7 +13,10 @@ jobs:
 
       # Étape 1 : Initialiser Terraform
       - name: Terraform Init
-        run: terraform init
+        run: |
+          cd ../../terraform
+          terraform init
+
 
       # Étape 2 : Valider la configuration Terraform
       - name: Terraform Validate
